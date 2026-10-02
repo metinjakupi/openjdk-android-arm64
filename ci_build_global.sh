@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 . set_devkit_path.sh
+. ./pins.sh
 
 export JDK_DEBUG_LEVEL=release
 
@@ -12,6 +13,7 @@ sudo apt update
 sudo apt -y install autoconf python3 python-is-python3 unzip zip systemtap-sdt-dev libxtst-dev libasound2-dev libelf-dev libfontconfig1-dev libx11-dev libxext-dev libxrandr-dev libxrender-dev libxtst-dev libxt-dev g++ pkg-config
 
 wget -nc -nv -O android-ndk-$NDK_VERSION-linux-x86_64.zip "https://dl.google.com/android/repository/android-ndk-$NDK_VERSION-linux-x86_64.zip"
+check_sum 1 "$NDK_SHA1" android-ndk-$NDK_VERSION-linux-x86_64.zip
 
 sudo chmod 777 extract_ndk.sh
 sudo chmod 777 get_boot_jdk.sh

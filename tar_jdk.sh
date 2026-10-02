@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 . set_devkit_path.sh
+. ./pins.sh
 
 unset AR AS CC CXX LD OBJCOPY RANLIB STRIP CPPFLAGS LDFLAGS
 git clone --depth 1 --branch 'v2.2.0' https://github.com/termux/termux-elf-cleaner || true
+check_commit termux-elf-cleaner "$ELF_CLEANER_COMMIT"
 cd termux-elf-cleaner
 autoreconf --install
 bash configure
